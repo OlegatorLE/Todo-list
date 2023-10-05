@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <h2>Tags <a href="{% url 'web_app:add_tag' %}" style="float: right;" class="btn btn-primary">Add Tag</a></h2>
+  </div>
+  <div class="container">
+    {% if tags %}
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+        {% for tag in tags %}
+          <tr>
+            <td>
+              {{ tag.name }}
+            </td>
+            <td>
+              <a href="{% url 'web_app:edit_tag' pk=tag.id %}" class="btn btn-secondary">Update</a>
+            </td>
+            <td>
+              <a href="{% url 'web_app:delete_tag' pk=tag.id %}" class="btn btn-secondary">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
+  </div>
+{% endblock %}

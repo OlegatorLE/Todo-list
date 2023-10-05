@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="container">
+    <h2>Add New Tag</h2>
+    <form method="post" action="">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-success">Add Tag</button>
+      <a href="{% url 'web_app:tags' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}
