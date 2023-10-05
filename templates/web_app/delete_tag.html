@@ -4,7 +4,7 @@
   <div class="container">
     <H2>Delete Tag</H2>
 
-    <p>Are you sure want to delete the tag: {{ tag.name }} ?</p>
+    <p>Are you sure want to delete the tag: <strong>{{ tag.name }}</strong> ?</p>
     <form action="" method="post">
       {% csrf_token %}
       <input type="submit" value="Yes, delete" class="btn btn-danger"/>

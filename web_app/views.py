@@ -49,7 +49,7 @@ class ToggleTaskStatusView(generic.View):
 
 class TagListView(generic.ListView):
     model = Tag
-    template_name = "wep_app/tags.html"
+    template_name = "web_app/tags.html"
     context_object_name = "tags"
 
 
