@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from web_app.models import Task, Tag
+
+
+@admin.register(Task)
+class TaskAdmin(admin.ModelAdmin):
+    list_display = ["content", "created_at", "deadline"]
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    pass

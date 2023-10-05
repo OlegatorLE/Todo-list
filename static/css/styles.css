@@ -1,0 +1,23 @@
+body {
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: Blue;
+    font-weight: 500;
+}
+
+.done {
+    color: green;
+    font-weight: 900;
+}
+
+.not-done {
+    color: red;
+    font-weight: 900;
+}
+
+.deadline {
+    color: #ff2432;
+}

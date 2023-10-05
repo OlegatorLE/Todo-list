@@ -1,1 +1,41 @@
-<h1>ToDo List</h1>
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <h2>
+      TODO list
+      <a href="{% url 'web_app:add_task' %}" class="btn btn-primary" style="float: right">Add task</a>
+    </h2><br>
+  </div>
+  {% for task in tasks %}
+    <div class="container">
+      <p>
+        <strong>{{ task.content }}</strong>
+        <span class="{% if task.is_done %}done{% else %}not-done{% endif %}">
+                {{ task.is_done|yesno:"Done,Not done" }}
+            </span>
+      </p>
+      {% if task.is_done %}
+        <a href="{% url 'web_app:toggle_task_status' task.id %}" class="btn btn-secondary" style="float: right">Undo</a>
+      {% else %}
+        <a href="{% url 'web_app:toggle_task_status' task.id %}" class="btn btn-success"
+           style="float: right">Complete</a>
+      {% endif %}
+
+      <p>Created: {{ task.created_at }}
+        {% if task.deadline %}
+          <span class="deadline"> Deadline: {{ task.deadline }}</span>
+        {% endif %}
+      </p>
+
+      <p>Tags:
+        {% for tag in task.tags.all %}
+          {{ tag.name }}
+        {% endfor %}
+        <a href="{% url 'web_app:edit_task' task.id %}">Update</a>
+        <a href="{% url 'web_app:delete_task' task.id %}">Delete</a>
+      </p>
+      <hr>
+    </div>
+  {% endfor %}
+{% endblock %}
